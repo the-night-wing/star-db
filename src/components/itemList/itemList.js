@@ -41,7 +41,6 @@ export default class ItemList extends Component{
         if(!peopleList){
             return <Spinner/>
         }
-        console.log(peopleList);
         const people = this.renderItems(peopleList)
 
         return(
