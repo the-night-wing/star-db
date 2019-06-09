@@ -6,7 +6,8 @@ import SwapiService from "../../services/swapiService.js"
 export default class PersonDetails extends Component{
 
     state = {
-        person : null
+        person : null,
+        loading: false
     }
 
     swapiService = new SwapiService();
@@ -15,7 +16,19 @@ export default class PersonDetails extends Component{
     componentDidMount(){
         this.updatePerson();
     }
+    
+    componentDidUpdate(prevProps){
+        if(this.props.personId !== prevProps.personId){
+           this.onPersonChange(); 
+        }
+    }
 
+    onPersonChange = () => {
+        this.setState({
+            loading : true
+        }, () => this.updatePerson() )
+    }
+    
     updatePerson = () => {
         const {personId} = this.props;
 
@@ -25,25 +38,20 @@ export default class PersonDetails extends Component{
 
         this.swapiService.getPerson(personId)
                             .then( person => this.setState({
-                                person
+                                person,
+                                loading : false
                             }) )
     }
 
-    componentDidUpdate(prevProps){
-        if(this.props.personId !== prevProps.personId){
-            // const {selectedPerson} = this.props;
-            // console.log(selectedPerson);
-            // this.updatePerson(selectedPerson);
-            this.updatePerson()
-        }
-    }
-
-    
     render(){
-        const {person} = this.state;
+        const {person, loading} = this.state;
 
-        if(!person){
+        if(!person && !loading){
             return <span>Choose a character</span>
+        }
+
+        if(loading){
+            return <Spinner/>
         }
 
         return(
