@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/app/App';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import SwapiService from "./swapiService.js"
+import SwapiService from "./services/swapiService.js";
 
 const swapi = new SwapiService();
 
-Promise.all([swapi.getAllPeople(), swapi.getPerson("2")]).then(([people, person])=>{
-    people.forEach((p) => {
-        console.log(p.name)
-            }
-        );
-        console.log("--------------------------")
-        console.log(person.name);
-})
+// Promise.all([swapi.getAllPeople(), swapi.getPerson("2")]).then(([people, person])=>{
+//     people.forEach((p) => {
+//         console.log(p.name)
+//             }
+//         );
+//         console.log("--------------------------")
+//         console.log(person.name);
+// })
 
 // swapi.getAllPeople()
 //                     .then((people) => {

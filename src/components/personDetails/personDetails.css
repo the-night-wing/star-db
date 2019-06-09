@@ -1,0 +1,36 @@
+.personDetails{
+    padding: 10px;
+    background-color: rgb(65, 62, 62);
+    border-radius: 3%;
+    width: 90%;
+    margin: 10px auto 0 auto;
+    /* flex-direction: row; */
+}
+
+.personDetails li{
+    background-color: rgb(65, 62, 62);
+    color: white;
+    border: none;
+    border-top: 1px solid rgb(85, 85, 85);
+    /* background-color: rgb(65, 62, 62);
+    color: white;
+    border: 1px solid rgb(85, 85, 85); */
+}
+
+.personDetails img{
+    border-radius: 5%;
+}
+
+.personInfo{    
+    margin-left: 20px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.personInfo h3{
+    color: white;
+}
+
+.personInfo ul{
+
+}

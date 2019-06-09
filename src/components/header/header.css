@@ -1,0 +1,46 @@
+.header{
+    /* background-color: rgb(41, 40, 41); */
+    height: 40px;
+}
+
+.header a{
+    text-decoration: none;
+}
+
+.header .logo{
+    padding-left: 10px;
+}
+
+.nav-bar{
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 0 250px;
+    width: 40%;
+}
+
+.nav-bar a {
+    display: inline-block;
+    color: rgb(32, 150, 124);
+    height: 40px;
+    vertical-align: middle;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.nav-bar li {
+    position: relative;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.nav-bar li:hover{
+    background-color: rgba(0, 0, 0, 0.712);
+    border-radius: 15%;
+}
+
+.header h3>a{
+    cursor: pointer;
+    color: white;
+    /* font-weight: bold; */
+    font-size: 30px;
+}

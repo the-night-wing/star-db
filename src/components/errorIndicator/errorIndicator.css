@@ -1,0 +1,10 @@
+.errorIndicator h2, 
+.errorIndicator span{
+    color: rgb(228, 118, 28);
+    text-align: center;
+    display: block;
+}
+
+.errorIndicator {
+    margin: 0 auto;
+}

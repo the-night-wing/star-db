@@ -1,0 +1,10 @@
+.App{
+  background-color: rgb(43, 42, 41);
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+a{
+  cursor: pointer;
+}
