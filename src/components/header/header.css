@@ -1,6 +1,7 @@
 .header{
     /* background-color: rgb(41, 40, 41); */
     height: 40px;
+    margin-top: 20px;
 }
 
 .header a{
@@ -9,6 +10,10 @@
 
 .header .logo{
     padding-left: 10px;
+}
+
+.logo a:hover{
+    color: rgb(32, 150, 124);
 }
 
 .nav-bar{
@@ -27,6 +32,10 @@
     line-height: 35px;
 }
 
+.nav-bar a:hover{
+    color:rgb(132, 219, 197);
+}
+
 .nav-bar li {
     position: relative;
     list-style-type: none;
@@ -34,8 +43,8 @@
 }
 
 .nav-bar li:hover{
-    background-color: rgba(0, 0, 0, 0.712);
-    border-radius: 15%;
+    background-color: rgba(56, 54, 54, 0.712);
+    border-radius: 10%;
 }
 
 .header h3>a{

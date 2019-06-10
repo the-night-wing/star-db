@@ -4,9 +4,8 @@ import "../../bootstrap.css"
 import './App.css';
 import Header from "../header/header.js"
 import RandomPlanet from "../randomPlanet/randomPlanet.js"
-import ItemList from "../itemList/itemList.js"
-import PersonDetails from "../personDetails/personDetails.js"
 import ErrorIndicator from "../errorIndicator/errorIndicator.js"
+import PeoplePage from "../peoplePage"
 
 export default class App extends Component {
   
@@ -39,8 +38,10 @@ export default class App extends Component {
       <div className="App">
         <Header/>
         <RandomPlanet/>
-        <ItemList onItemSelected={(id) => this.onPersonSelected(id)}/>
-        <PersonDetails personId={this.state.selectedPerson}/>
+        <PeoplePage 
+          onItemSelected={(id) => this.onPersonSelected(id)}
+          personId={this.state.selectedPerson}
+        />
       </div>
     )
   } 
