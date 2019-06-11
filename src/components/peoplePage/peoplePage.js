@@ -5,19 +5,27 @@ import PersonDetails from "../personDetails"
 export class PeoplePage extends Component {
 
     state={
-
+        selectedPerson : null
     }
 
+    onPersonSelected = (id) =>{
+        console.log(id);
+        this.setState({
+          selectedPerson : id
+        })
+      }
+
     render() {
-        const {personId, onItemSelected} = this.props;
+        // const {personId, onItemSelected} = this.props;
+        const {selectedPerson} = this.state;
 
         return (
             <React.Fragment>
                 <ItemList 
-                    onItemSelected={onItemSelected}
+                    onItemSelected={(id) => this.onPersonSelected(id)}
                 />
                 <PersonDetails
-                    personId={personId}
+                    personId={selectedPerson}
                 />
             </React.Fragment>
         )

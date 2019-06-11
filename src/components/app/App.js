@@ -10,16 +10,16 @@ import PeoplePage from "../peoplePage"
 export default class App extends Component {
   
   state = {
-    selectedPerson : null,
+    // selectedPerson : null,
     hasError : false
   }
 
-  onPersonSelected = (id) =>{
-    console.log(id);
-    this.setState({
-      selectedPerson : id
-    })
-  }
+  // onPersonSelected = (id) =>{
+  //   console.log(id);
+  //   this.setState({
+  //     selectedPerson : id
+  //   })
+  // }
 
   componentDidCatch(){
     this.setState({
@@ -39,8 +39,8 @@ export default class App extends Component {
         <Header/>
         <RandomPlanet/>
         <PeoplePage 
-          onItemSelected={(id) => this.onPersonSelected(id)}
-          personId={this.state.selectedPerson}
+          // onItemSelected={(id) => this.onPersonSelected(id)}
+          // personId={this.state.selectedPerson}
         />
       </div>
     )
