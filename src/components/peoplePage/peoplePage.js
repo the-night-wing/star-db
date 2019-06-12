@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ItemList from "../itemList"
 import PersonDetails from "../personDetails"
 import ErrorIndicator from "../errorIndicator"
+import Row from "../row"
 
 export class PeoplePage extends Component {
 
@@ -32,17 +33,20 @@ export class PeoplePage extends Component {
             return <ErrorIndicator/>
         }
 
+        const itemList = <ItemList 
+                            getData = {getData}
+                            onItemSelected={(id) => this.onPersonSelected(id)}
+                            renderItem={renderItem}
+                        />
+        const personDetails = <PersonDetails
+                                    personId={selectedPerson}
+                                />
+
         return (
-            <div>
-                <ItemList 
-                    getData = {getData}
-                    onItemSelected={(id) => this.onPersonSelected(id)}
-                    renderItem={renderItem}
-                />
-                <PersonDetails
-                    personId={selectedPerson}
-                />
-            </div>
+            <Row 
+                left={itemList}
+                right={personDetails} 
+            />
         )
     }
 }
