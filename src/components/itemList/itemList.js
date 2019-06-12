@@ -6,46 +6,52 @@ import Spinner from "../spinner"
 
 export default class ItemList extends Component{
     state={
-        peopleList : []
+        itemList : []
     }
-    swapiService = new SwapiService();
     
     componentDidMount(){
-        this.swapiService.getAllPeople()
-                         .then((peopleList) => {
-                             this.setState({
-                                 peopleList
-                             })
-                         })
+        const {getData} = this.props
+
+        getData()
+                .then((itemList) => {
+                    this.setState({
+                        itemList
+                    })
+                })
     }
 
     renderItems(arr){
+
+
         return(
-            arr.map(
-                person => {return(
-                    <li 
-                        className="list-group-item"
-                        key={person.id}
-                        onClick={() => this.props.onItemSelected(person.id)}
-                    >
-                            {person.name}
-                    </li>
+            arr.map(                
+                person => {
+                    
+                    const label = this.props.renderItem(person)
+                    return(
+                        <li 
+                            className="list-group-item"
+                            key={person.id}
+                            onClick={() => this.props.onItemSelected(person.id)}
+                        >
+                                {label}
+                        </li>
                 )} 
             )
         )
     }
 
     render(){
-        const {peopleList} = this.state;
+        const {itemList} = this.state;
 
-        if(!peopleList){
+        if(!itemList){
             return <Spinner/>
         }
-        const people = this.renderItems(peopleList)
+        const items = this.renderItems(itemList)
 
         return(
             <ul className="itemList list-group">
-                {people}
+                {items}
             </ul>
         )
     }

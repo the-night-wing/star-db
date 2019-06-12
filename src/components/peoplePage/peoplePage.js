@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import ItemList from "../itemList"
 import PersonDetails from "../personDetails"
+import ErrorIndicator from "../errorIndicator"
 
 export class PeoplePage extends Component {
 
     state={
-        selectedPerson : null
+        selectedPerson : null,
+        hasError : false
+    }
+
+    componentDidCatch(){
+        this.setState({
+            hasError : true
+        })
     }
 
     onPersonSelected = (id) =>{
@@ -17,17 +25,24 @@ export class PeoplePage extends Component {
 
     render() {
         // const {personId, onItemSelected} = this.props;
-        const {selectedPerson} = this.state;
+        const {selectedPerson, hasError} = this.state;
+        const {getData, renderItem} = this.props;
+
+        if(hasError){
+            return <ErrorIndicator/>
+        }
 
         return (
-            <React.Fragment>
+            <div>
                 <ItemList 
+                    getData = {getData}
                     onItemSelected={(id) => this.onPersonSelected(id)}
+                    renderItem={renderItem}
                 />
                 <PersonDetails
                     personId={selectedPerson}
                 />
-            </React.Fragment>
+            </div>
         )
     }
 }

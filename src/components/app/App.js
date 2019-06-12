@@ -6,6 +6,9 @@ import Header from "../header/header.js"
 import RandomPlanet from "../randomPlanet/randomPlanet.js"
 import ErrorIndicator from "../errorIndicator/errorIndicator.js"
 import PeoplePage from "../peoplePage"
+import ItemList from "../itemList"
+import PersonDetails from "../personDetails"
+import SwapiService from "../../services/swapiService.js"
 
 export default class App extends Component {
   
@@ -13,6 +16,8 @@ export default class App extends Component {
     // selectedPerson : null,
     hasError : false
   }
+
+  swapiService = new SwapiService();
 
   // onPersonSelected = (id) =>{
   //   console.log(id);
@@ -39,9 +44,31 @@ export default class App extends Component {
         <Header/>
         <RandomPlanet/>
         <PeoplePage 
+          getData = {this.swapiService.getAllPeople}
+          renderItem={({name, gender, birthYear}) => `${name} (${gender} ${birthYear})`}
           // onItemSelected={(id) => this.onPersonSelected(id)}
           // personId={this.state.selectedPerson}
         />
+        <div>
+                <ItemList
+                  getData = {this.swapiService.getAllPlanets}
+                  renderItem={({name, diameter}) => `${name} (diameter : ${diameter})`}
+                    // onItemSelected={(id) => this.onPersonSelected(id)}
+                />
+                <PersonDetails
+                    // personId={selectedPerson}
+                />
+        </div>
+        <div>
+                <ItemList 
+                  getData = {this.swapiService.getAllStarships}
+                  renderItem={({name, model}) => `${name} (model : ${model})`}
+                    // onItemSelected={(id) => this.onPersonSelected(id)}
+                />
+                <PersonDetails
+                    // personId={selectedPerson}
+                />
+          </div>
       </div>
     )
   } 
