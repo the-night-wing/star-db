@@ -99,6 +99,7 @@ const PlanetContent = ({planet}) => {
             <img 
                     src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
                     height="200px"
+                    alt="Planet"
                 />
                 <div className="planetInfo">
                     <h3>{`${name}`}</h3>

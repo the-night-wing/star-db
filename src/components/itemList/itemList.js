@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./itemList.css";
-import SwapiService from "../../services/swapiService.js"
 import Spinner from "../spinner"
 
 
@@ -22,17 +21,16 @@ export default class ItemList extends Component{
 
     renderItems(arr){
 
-
         return(
             arr.map(                
-                person => {
+                item => {
                     
-                    const label = this.props.renderItem(person)
+                    const label = this.props.renderItem(item)
                     return(
                         <li 
                             className="list-group-item"
-                            key={person.id}
-                            onClick={() => this.props.onItemSelected(person.id)}
+                            key={item.id}
+                            onClick={() => this.props.onItemSelected(item.id)}
                         >
                                 {label}
                         </li>

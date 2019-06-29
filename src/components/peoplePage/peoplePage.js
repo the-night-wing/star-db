@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ItemList from "../itemList"
-import PersonDetails from "../personDetails"
+import ItemDetails from "../itemDetails"
 import Row from "../row"
 import ErrorBoundry from "../errorBoundry"
+import {Field} from "../itemDetails/itemDetails.js"
 
 export default class PeoplePage extends Component {
 
@@ -19,7 +20,7 @@ export default class PeoplePage extends Component {
     render() {
         // const {personId, onItemSelected} = this.props;
         const {selectedPerson} = this.state;
-        const {getData, renderItem} = this.props;
+        const {getData, renderItem, getItems, getImageUrl} = this.props;
 
 
         const itemList = 
@@ -32,9 +33,20 @@ export default class PeoplePage extends Component {
                         </ErrorBoundry>
         const personDetails = 
                             <ErrorBoundry>
-                                <PersonDetails
-                                    personId={selectedPerson}
-                                />
+                                <ItemDetails
+                                    itemId={selectedPerson}
+                                    getItem={getItem}
+                                    getImageUrl={getImageUrl}
+                                >
+                                    <Field
+                                        label="Gender"
+                                        value="gender"
+                                    />
+                                    <Field
+                                        label="Eye Color"
+                                        value="eyeColor"
+                                    />
+                                </ItemDetails>
                             </ErrorBoundry>
                         
 

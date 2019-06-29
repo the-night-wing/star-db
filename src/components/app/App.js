@@ -7,9 +7,9 @@ import RandomPlanet from "../randomPlanet/randomPlanet.js"
 import ErrorIndicator from "../errorIndicator/errorIndicator.js"
 import PeoplePage from "../peoplePage"
 import ItemList from "../itemList"
-import PersonDetails from "../personDetails"
+import ItemDetails from "../itemDetails"
 import SwapiService from "../../services/swapiService.js"
-import Row from "../row"
+// import Row from "../row"
 
 export default class App extends Component {
   
@@ -47,6 +47,8 @@ export default class App extends Component {
         <PeoplePage 
           getData = {this.swapiService.getAllPeople}
           renderItem={({name, gender, birthYear}) => `${name} (${gender} ${birthYear})`}
+          getItem={(id) => this.swapiService.getPerson(id)}
+          getImageUrl={(id) => this.swapiService.getPersonImage(id)}
           // onItemSelected={(id) => this.onPersonSelected(id)}
           // personId={this.state.selectedPerson}
         />
@@ -55,11 +57,10 @@ export default class App extends Component {
                 <ItemList
                   getData = {this.swapiService.getAllPlanets}
                   renderItem={({name, diameter}) => `${name} (diameter : ${diameter})`}
-                    // onItemSelected={(id) => this.onPersonSelected(id)}
                 />
           </div>
           <div className="col-md-6">
-                <PersonDetails
+                <ItemDetails
                     // personId={selectedPerson}
                 />
           </div>
@@ -69,11 +70,10 @@ export default class App extends Component {
                 <ItemList 
                   getData = {this.swapiService.getAllStarships}
                   renderItem={({name, model}) => `${name} (model : ${model})`}
-                    // onItemSelected={(id) => this.onPersonSelected(id)}
                 />
           </div>
           <div className="col-md-6">
-                <PersonDetails
+                <ItemDetails
                     // personId={selectedPerson}
                 />
           </div>
