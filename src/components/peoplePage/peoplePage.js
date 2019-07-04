@@ -20,7 +20,7 @@ export default class PeoplePage extends Component {
     render() {
         // const {personId, onItemSelected} = this.props;
         const {selectedPerson} = this.state;
-        const {getData, renderItem, getItems, getImageUrl} = this.props;
+        const {getData, renderItem, getItem, getImageUrl} = this.props;
 
 
         const itemList = 

@@ -42,17 +42,17 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Header/>
-        <RandomPlanet/>
-        <PeoplePage 
-          getData = {this.swapiService.getAllPeople}
-          renderItem={({name, gender, birthYear}) => `${name} (${gender} ${birthYear})`}
-          getItem={(id) => this.swapiService.getPerson(id)}
-          getImageUrl={(id) => this.swapiService.getPersonImage(id)}
-          // onItemSelected={(id) => this.onPersonSelected(id)}
-          // personId={this.state.selectedPerson}
+        <Header />
+        <RandomPlanet />
+        <PeoplePage
+          getData={this.swapiService.getAllPeople}
+          renderItem={({ name, gender, birthYear }) =>
+                        `${name} (${gender} ${birthYear})`
+                      }
+          getItem={id => this.swapiService.getPerson(id)}
+          getImageUrl={id => this.swapiService.getPersonImage(id)}
         />
-        <div className="row mb2">
+        {/* <div className="row mb2">
           <div className="col-md-6">
                 <ItemList
                   getData = {this.swapiService.getAllPlanets}
@@ -77,8 +77,8 @@ export default class App extends Component {
                     // personId={selectedPerson}
                 />
           </div>
-        </div>
+        </div> */}
       </div>
-    )
+    );
   } 
 }

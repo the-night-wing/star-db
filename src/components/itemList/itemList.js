@@ -1,24 +1,10 @@
 import React, {Component} from "react";
 import "./itemList.css";
-import Spinner from "../spinner"
+import SwapiService from "../../services/swapiService.js"
+import withData from "../hoc/withData"
 
-
-export default class ItemList extends Component{
-    state={
-        itemList : []
-    }
+class ItemList extends Component{
     
-    componentDidMount(){
-        const {getData} = this.props
-
-        getData()
-                .then((itemList) => {
-                    this.setState({
-                        itemList
-                    })
-                })
-    }
-
     renderItems(arr){
 
         return(
@@ -40,11 +26,9 @@ export default class ItemList extends Component{
     }
 
     render(){
-        const {itemList} = this.state;
 
-        if(!itemList){
-            return <Spinner/>
-        }
+        const {itemList} = this.props;
+
         const items = this.renderItems(itemList)
 
         return(
@@ -55,3 +39,9 @@ export default class ItemList extends Component{
     }
     
 }
+
+const {getAllPeople} = new SwapiService();
+
+// const {getData} = this.props;
+
+export default withData(ItemList, getAllPeople)
