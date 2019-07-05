@@ -6,8 +6,6 @@ import Header from "../header/header.js"
 import RandomPlanet from "../randomPlanet/randomPlanet.js"
 import ErrorIndicator from "../errorIndicator/errorIndicator.js"
 import PeoplePage from "../peoplePage"
-import ItemList from "../itemList"
-import ItemDetails from "../itemDetails"
 import SwapiService from "../../services/swapiService.js"
 // import Row from "../row"
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import ItemList from "../itemList"
 import withData from "../hoc/withData"
 import SwapiService from "../../services/swapiService.js"

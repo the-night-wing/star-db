@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import ItemList from "../itemList"
-import {PeopleList} from "../sw-components"
-import ItemDetails from "../itemDetails"
+import {PeopleList, PeopleDetails} from "../sw-components"
 import Row from "../row"
 import ErrorBoundry from "../errorBoundry"
-import {Field} from "../itemDetails/itemDetails.js"
+import {DetailsField} from "../itemDetails/itemDetails.js"
 
 export default class PeoplePage extends Component {
 
@@ -21,7 +19,7 @@ export default class PeoplePage extends Component {
     render() {
         // const {personId, onItemSelected} = this.props;
         const {selectedPerson} = this.state;
-        const {renderItem, getItem, getImageUrl} = this.props;
+        const {renderItem} = this.props;
 
 
         const itemList = 
@@ -33,20 +31,18 @@ export default class PeoplePage extends Component {
                         </ErrorBoundry>
         const personDetails = 
                             <ErrorBoundry>
-                                <ItemDetails
+                                <PeopleDetails
                                     itemId={selectedPerson}
-                                    getItem={getItem}
-                                    getImageUrl={getImageUrl}
                                 >
-                                    <Field
+                                    <DetailsField
                                         label="Gender"
                                         value="gender"
                                     />
-                                    <Field
+                                    <DetailsField
                                         label="Eye Color"
                                         value="eyeColor"
                                     />
-                                </ItemDetails>
+                                </PeopleDetails>
                             </ErrorBoundry>
                         
 

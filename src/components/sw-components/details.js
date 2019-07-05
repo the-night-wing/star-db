@@ -1,20 +1,20 @@
-import React from 'react'
-
-import ItemDetails, {Field} from "../itemDetails"
+import ItemDetails from "../itemDetails"
 import SwapiService from "../../services/swapiService.js"
+import withDetails from "../hoc/withDetails"
 
+const { getPerson,
+        getPersonImage,
+        getStarship,
+        getStarshipImage,
+        getPlanet,
+        getPlanetImage
+} = new SwapiService();
 
-const PeopleDetails = () => {
-    return(1)
-}
+const PeopleDetails = withDetails(ItemDetails, getPerson, getPersonImage)
 
-const PlanetsDetails = () => {
-    return(1)
-}
+const PlanetsDetails = withDetails(ItemDetails, getPlanet, getPlanetImage)
 
-const StarshipsDetails = () => {
-    return(1)
-}
+const StarshipsDetails = withDetails(ItemDetails, getStarship, getStarshipImage)
 
 export {
     PeopleDetails,
