@@ -2,6 +2,18 @@ import React, {Component, Children} from "react";
 import "./itemDetails.css";
 import Spinner from "../spinner"
 
+// const f = (View, getItem) => {
+//     return(
+//         class A extends Component {
+//             render(){
+//                 return(
+
+//                 )
+//             }
+//         }
+//     )
+// }
+
 export default class ItemDetails extends Component{
 
     state = {

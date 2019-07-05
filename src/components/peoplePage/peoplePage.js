@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ItemList from "../itemList"
+import {PeopleList} from "../sw-components"
 import ItemDetails from "../itemDetails"
 import Row from "../row"
 import ErrorBoundry from "../errorBoundry"
@@ -20,13 +21,12 @@ export default class PeoplePage extends Component {
     render() {
         // const {personId, onItemSelected} = this.props;
         const {selectedPerson} = this.state;
-        const {getData, renderItem, getItem, getImageUrl} = this.props;
+        const {renderItem, getItem, getImageUrl} = this.props;
 
 
         const itemList = 
                         <ErrorBoundry>
-                            <ItemList 
-                                getData = {getData}
+                            <PeopleList 
                                 onItemSelected={(id) => this.onPersonSelected(id)}
                                 renderItem={renderItem}
                             />

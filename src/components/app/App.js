@@ -45,13 +45,13 @@ export default class App extends Component {
         <Header />
         <RandomPlanet />
         <PeoplePage
-          getData={this.swapiService.getAllPeople}
           renderItem={({ name, gender, birthYear }) =>
                         `${name} (${gender} ${birthYear})`
                       }
           getItem={id => this.swapiService.getPerson(id)}
           getImageUrl={id => this.swapiService.getPersonImage(id)}
         />
+
         {/* <div className="row mb2">
           <div className="col-md-6">
                 <ItemList

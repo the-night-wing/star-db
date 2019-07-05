@@ -1,12 +1,22 @@
+import React from 'react'
+import ItemList from "../itemList"
+import withData from "../hoc/withData"
+import SwapiService from "../../services/swapiService.js"
 
-const PeopleList = () => {
-    return()
-}
+const {
+    getAllPeople,
+    getAllPlanets,
+    getAllStarships
+} = new SwapiService()
 
-const PlanetsList = () => {
-    return()
-}
+const PeopleList = withData(ItemList, getAllPeople)
 
-const StarshipsList = () => {
-    return()
+const PlanetsList = withData(ItemList, getAllPlanets)
+
+const StarshipsList = withData(ItemList, getAllStarships)
+
+export {
+    PeopleList,
+    PlanetsList,
+    StarshipsList
 }
