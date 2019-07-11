@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import "./randomPlanet.css";
 import SwapiService from "../../services/swapiService.js"
+import OfflineSwapiService from "../../services/offlineSwapiService.js"
 import Spinner from "../spinner"
 import ErrorIndicator from "../errorIndicator/errorIndicator.js"
 
 export default class RandomPlanet extends Component{
 
     swapiService = new SwapiService();
+    offlineSwapiService = new OfflineSwapiService();
 
     state = {
         planet : {},
@@ -16,7 +18,7 @@ export default class RandomPlanet extends Component{
     }
 
     getAllPlanets = () => {
-        this.swapiService.getAllPlanets()
+        this.offlineSwapiService.getAllPlanets()
                             .then((body) => {
                             console.log(body)
                             this.setState({
@@ -39,7 +41,7 @@ export default class RandomPlanet extends Component{
 
     updatePlanet = () => {
         const id = Math.floor(Math.random()*25 + 2 )
-        this.swapiService.getPlanet(id)
+        this.offlineSwapiService.getPlanet(id)
             .then((planet) => {
                 this.onPlanetLoaded(planet)
             })
