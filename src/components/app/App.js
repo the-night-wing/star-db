@@ -4,79 +4,36 @@ import "../../bootstrap.css"
 import './App.css';
 import Header from "../header/header.js"
 import RandomPlanet from "../randomPlanet/randomPlanet.js"
-import ErrorIndicator from "../errorIndicator/errorIndicator.js"
+import ErrorBoundry from "../errorBoundry"
 import PeoplePage from "../peoplePage"
 import SwapiService from "../../services/swapiService.js"
-// import Row from "../row"
+import OfflineSwapiService from "../../services/offlineSwapiService.js"
+import {SwapiServiceProvider} from "../swapiServiceContext"
 
 export default class App extends Component {
   
   state = {
-    // selectedPerson : null,
     hasError : false
   }
 
   swapiService = new SwapiService();
-
-  // onPersonSelected = (id) =>{
-  //   console.log(id);
-  //   this.setState({
-  //     selectedPerson : id
-  //   })
-  // }
-
-  componentDidCatch(){
-    this.setState({
-      hasError : true
-    })
-  }
+  offlineSwapiService = new OfflineSwapiService();
 
   render(){
-    const {hasError} = this.state;
-
-    if(hasError){
-      return <ErrorIndicator/>
-    }
-
+      // console.log(this.offlineSwapiService.getAllPeople());
     return (
-      <div className="App">
-        <Header />
-        <RandomPlanet />
-        <PeoplePage
-          renderItem={({ name, gender, birthYear }) =>
-                        `${name} (${gender} ${birthYear})`
-                      }
-          getItem={id => this.swapiService.getPerson(id)}
-          getImageUrl={id => this.swapiService.getPersonImage(id)}
-        />
-
-        {/* <div className="row mb2">
-          <div className="col-md-6">
-                <ItemList
-                  getData = {this.swapiService.getAllPlanets}
-                  renderItem={({name, diameter}) => `${name} (diameter : ${diameter})`}
-                />
-          </div>
-          <div className="col-md-6">
-                <ItemDetails
-                    // personId={selectedPerson}
-                />
-          </div>
+      // <SwapiServiceProvider value={this.offlineSwapiService}>
+        <div className="App">
+          <Header />
+          <RandomPlanet />
+          <PeoplePage
+            getItem={id => this.offlineSwapiService.getPerson(id)}
+            getImageUrl={id => this.offlineSwapiService.getPersonImage(id)}
+            // getItem={id => this.swapiService.getPerson(id)}
+            // getImageUrl={id => this.swapiService.getPersonImage(id)}
+          />
         </div>
-        <div className="row mb2">
-          <div className="col-md-6">
-                <ItemList 
-                  getData = {this.swapiService.getAllStarships}
-                  renderItem={({name, model}) => `${name} (model : ${model})`}
-                />
-          </div>
-          <div className="col-md-6">
-                <ItemDetails
-                    // personId={selectedPerson}
-                />
-          </div>
-        </div> */}
-      </div>
+      // </SwapiServiceProvider>
     );
   } 
 }

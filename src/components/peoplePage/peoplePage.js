@@ -26,7 +26,6 @@ export default class PeoplePage extends Component {
                         <ErrorBoundry>
                             <PeopleList 
                                 onItemSelected={(id) => this.onPersonSelected(id)}
-                                renderItem={renderItem}
                             />
                         </ErrorBoundry>
         const personDetails = 
